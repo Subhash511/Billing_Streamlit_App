@@ -47,10 +47,10 @@ def main_ui(db_id,df_wholesale):
     # Initialize session state to expand by default on first load
     if "expand_qps" not in st.session_state:
         st.session_state.expand_qps = True
-        
+
     with st.expander("See QPS Scheme",expanded=st.session_state.expand_qps):
         
-        st.image("logo/QPSScheme.jpeg", use_column_width=True)
+        st.image("logo/QPSScheme.jpeg", use_container_width=True)
     st.session_state.expand_qps = False    
 
     # --- TABS ---
