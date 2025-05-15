@@ -6,4 +6,5 @@ services:
     ports:
       - "8501:8501"
     volumes:
-      - ./DATA:/app/data  # <-- Mount DB volume here
+      - ./DATA:/app/DATA  # <-- Mount DB volume here
+      - ./images:/app/images
