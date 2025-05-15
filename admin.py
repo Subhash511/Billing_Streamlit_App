@@ -44,7 +44,7 @@ def admin_ui(df_wholesale):
     st.title("📦 QPS Bill Entry System")
     with st.expander("See QPS Scheme"):
         
-        st.image("images/QPSScheme.jpeg")
+        st.image("logo/QPSScheme.jpeg")
 
     with st.expander('Data Uplode and Download System '):
         uploaded_file = st.file_uploader("Choose an Excel file", type=["xlsx"])

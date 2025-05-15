@@ -45,7 +45,7 @@ def main_ui(db_id,df_wholesale):
     st.title("📦 QPS Bill Entry System")
     with st.expander("See QPS Scheme"):
         
-        st.image("images/QPSScheme.jpeg")
+        st.image("logo/QPSScheme.jpeg")
 
     # --- TABS ---
     tab1, tab2 = st.tabs(["➕ Add Bill", "🛠️ Update/Delete Bill"])
