@@ -159,19 +159,22 @@ def main_ui(db_id,df_wholesale):
 
     #st.write(df_wholesale)
     # Step 1: Create a month-year column in format "Apr-24"
-    df_bills['Bill_date'] = pd.to_datetime(df_bills['Bill_date'])
-    df_bills['month_str'] = df_bills['Bill_date'].dt.strftime('%b-%y')
-    # Step 2: Streamlit selectbox for month
-    unique_months = df_bills['month_str'].unique()
-    selected_month = st.selectbox("Select Month", sorted(unique_months))
-    # Step 3: Filter data by selected month
-    filtered_df = df_bills[df_bills['month_str'] == selected_month]
-    pivot_df = filtered_df.pivot_table(index='Whole_Saler_id', values='Sale_qty', aggfunc='sum').reset_index()
-    merge = pd.merge(df_wholesale,pivot_df,left_on='Id',right_on='Whole_Saler_id',how='left')
-    merge.drop(columns=['A','Whole_Saler_id'],inplace=True)
-    merge['Balance'] = merge['TGT'] - merge['Sale_qty']
-    merge['Balance'] = np.where( merge['Balance'] < 0, np.nan,merge['Balance'])
-    merge['Ach%'] =  np.round(merge['Sale_qty']*100/merge['TGT'],1)
-    merge['Ach%'] = merge['Ach%'].astype(str)+" %"
-    st.write(merge)
+    try:
+        df_bills['Bill_date'] = pd.to_datetime(df_bills['Bill_date'])
+        df_bills['month_str'] = df_bills['Bill_date'].dt.strftime('%b-%y')
+        # Step 2: Streamlit selectbox for month
+        unique_months = df_bills['month_str'].unique()
+        selected_month = st.selectbox("Select Month", sorted(unique_months))
+        # Step 3: Filter data by selected month
+        filtered_df = df_bills[df_bills['month_str'] == selected_month]
+        pivot_df = filtered_df.pivot_table(index='Whole_Saler_id', values='Sale_qty', aggfunc='sum').reset_index()
+        merge = pd.merge(df_wholesale,pivot_df,left_on='Id',right_on='Whole_Saler_id',how='left')
+        merge.drop(columns=['A','Whole_Saler_id'],inplace=True)
+        merge['Balance'] = merge['TGT'] - merge['Sale_qty']
+        merge['Balance'] = np.where( merge['Balance'] < 0, np.nan,merge['Balance'])
+        merge['Ach%'] =  np.round(merge['Sale_qty']*100/merge['TGT'],1)
+        merge['Ach%'] = merge['Ach%'].astype(str)+" %"
+        st.write(merge)
+    except:
+        pass    
     conn.close()
