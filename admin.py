@@ -82,7 +82,7 @@ def admin_ui(df_wholesale):
             bill_date = st.date_input("Bill Date", value=date.today(), key="add_date")
         else:
             # Set the range: from 3 days ago to today
-            min_date = date.today() - timedelta(days=2)
+            min_date = "2025-05-01" #date.today() - timedelta(days=2)
             max_date = date.today()
 
             # Date input with restriction
@@ -132,7 +132,7 @@ def admin_ui(df_wholesale):
                 bill_to_edit = df_bills[df_bills['id'] == selected_bill_id].iloc[0]
 
                 new_bill_date = st.date_input("Bill Date", value=pd.to_datetime(bill_to_edit['Bill_date']), key=f"edit_date_{selected_bill_id}")
-                new_sale_qty = st.number_input("Sale Quantity", min_value=1.0, value=float(bill_to_edit['Sale_qty']), step=1.0, key="edit_qty")
+                new_sale_qty = st.number_input("Sale Quantity", min_value=0, value=float(bill_to_edit['Sale_qty']), step=5, key="edit_qty")
                 uploaded_file_update = st.file_uploader("Update Bill Photo (optional)", type=["jpg", "jpeg", "png"], key="edit_upload")
 
                 updated_photo_path = bill_to_edit['Bill_photo']
