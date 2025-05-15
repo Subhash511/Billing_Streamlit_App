@@ -34,14 +34,14 @@ if not os.path.exists("DATA"):
 # ================================
 @st.cache_data
 def load_users():
-    df = pd.read_excel("DATA/data.xlsx", sheet_name='DB')
-    # df = pd.read_parquet('DATA/DB.parquet')
+    # df = pd.read_excel("DATA/data.xlsx", sheet_name='DB')
+    df = pd.read_parquet('DATA/DB.parquet')
     return df
 
 @st.cache_data
 def load_wholesaler():
-    df_wholesale = pd.read_excel("DATA/data.xlsx", sheet_name='data')
-    # df_wholesale = pd.read_parquet('DATA/DB.parquet')
+    # df_wholesale = pd.read_excel("DATA/data.xlsx", sheet_name='data')
+    df_wholesale = pd.read_parquet('DATA/DB.parquet')
     return df_wholesale
 
 df1 = load_users()
