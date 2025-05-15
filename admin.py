@@ -15,7 +15,7 @@ back_date = True
 
 def admin_ui(df_wholesale):
     # --- DB SETUP ---
-    conn = sqlite3.connect("users.db", check_same_thread=False)
+    conn = sqlite3.connect("DATA/users.db", check_same_thread=False)
     cursor = conn.cursor()
 
     cursor.execute("""
