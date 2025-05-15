@@ -43,9 +43,15 @@ def main_ui(db_id,df_wholesale):
     whole_salers = df_wholesale['A'].unique()
     # --- APP TITLE ---
     st.title("📦 QPS Bill Entry System")
-    with st.expander("See QPS Scheme"):
+
+    # Initialize session state to expand by default on first load
+    if "expand_qps" not in st.session_state:
+        st.session_state.expand_qps = True
         
-        st.image("logo/QPSScheme.jpeg")
+    with st.expander("See QPS Scheme",expanded=st.session_state.expand_qps):
+        
+        st.image("logo/QPSScheme.jpeg", use_column_width=True)
+    st.session_state.expand_qps = False    
 
     # --- TABS ---
     tab1, tab2 = st.tabs(["➕ Add Bill", "🛠️ Update/Delete Bill"])
