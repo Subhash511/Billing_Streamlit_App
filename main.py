@@ -76,7 +76,7 @@ def main_ui(db_id,df_wholesale):
                                     key="add_date")    
 
         bill_number = st.text_input("Bill Number (unique)", key="add_bill_no")
-        sale_qty = st.number_input("Sale Quantity", min_value=0, step=5, key="add_qty")
+        sale_qty = st.number_input("Sale Quantity", min_value=1, step=5, key="add_qty")
         uploaded_file = st.file_uploader("Upload Bill Photo", type=["jpg", "jpeg", "png"], key="add_upload")
 
         bill_photo_path = None

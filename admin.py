@@ -93,7 +93,7 @@ def admin_ui(df_wholesale):
                                     key="add_date")    
 
         bill_number = st.text_input("Bill Number (unique)", key="add_bill_no")
-        sale_qty = st.number_input("Sale Quantity", min_value=5, step=5, key="add_qty")
+        sale_qty = st.number_input("Sale Quantity", min_value=0, step=5, key="add_qty")
         uploaded_file = st.file_uploader("Upload Bill Photo", type=["jpg", "jpeg", "png"], key="add_upload")
 
         bill_photo_path = None
@@ -132,7 +132,7 @@ def admin_ui(df_wholesale):
                 bill_to_edit = df_bills[df_bills['id'] == selected_bill_id].iloc[0]
 
                 new_bill_date = st.date_input("Bill Date", value=pd.to_datetime(bill_to_edit['Bill_date']), key=f"edit_date_{selected_bill_id}")
-                new_sale_qty = st.number_input("Sale Quantity", min_value=0, value=float(bill_to_edit['Sale_qty']), step=5, key="edit_qty")
+                new_sale_qty = st.number_input("Sale Quantity", min_value=0, value=float(bill_to_edit['Sale_qty']), step=0.1, key="edit_qty")
                 uploaded_file_update = st.file_uploader("Update Bill Photo (optional)", type=["jpg", "jpeg", "png"], key="edit_upload")
 
                 updated_photo_path = bill_to_edit['Bill_photo']
