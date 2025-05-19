@@ -1,6 +1,11 @@
 import streamlit as st
 
-        
+st.set_page_config(
+page_title="Whole Seller Scheme ",  # Title on browser tab
+page_icon="📊",
+layout="centered",  # Optional: "centered" or "wide"
+initial_sidebar_state="collapsed"  # Optional: "auto", "expanded", or "collapsed"
+)
  
 
 st.markdown(
